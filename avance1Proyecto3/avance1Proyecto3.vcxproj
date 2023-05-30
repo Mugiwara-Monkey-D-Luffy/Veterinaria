@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{4BACE960-1B3D-4CC7-AED5-DDDB0625BECC}</ProjectGuid>
+    <EnableManagedPackageReferenceSupport>true</EnableManagedPackageReferenceSupport>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>avance1Proyecto3</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>avance1Proyecto3</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ArbolAA.cpp" />
+    <ClCompile Include="ArbolAVL.cpp" />
+    <ClCompile Include="ArbolB.cpp" />
+    <ClCompile Include="ArbolBB.cpp" />
+    <ClCompile Include="ArbolRN.cpp" />
+    <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="Sucursal.cpp" />
+    <ClCompile Include="VentanaPrincipal.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AcercaDe.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarMascota.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarMedicacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarTratamiento.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarVisita.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ArbolAA.h" />
+    <ClInclude Include="ArbolAVL.h" />
+    <ClInclude Include="ArbolB.h" />
+    <ClInclude Include="ArbolBB.h" />
+    <ClInclude Include="ArbolRN.h" />
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="ConsultarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultarMascota.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultarMedicacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultarTratamiento.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsultarVisita.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Contacto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarMascota.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarMedicacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarTratamiento.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EliminarVisita.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarMascota.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarMedicacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarTratamiento.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModificarVisita.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="NodoAA.h" />
+    <ClInclude Include="NodoAVL.h" />
+    <ClInclude Include="NodoB.h" />
+    <ClInclude Include="NodoBB.h" />
+    <ClInclude Include="NodoRN.h" />
+    <ClInclude Include="OpcionesCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClienteCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClienteMascota.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClienteVisita.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClinica.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClinicaMedicacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesClinicaTratamiento.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesFacturacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesFacturacionDescuento.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesFacturacionFacturacion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesFacturacionSaldo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesLugares.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesLugaresCiudad.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesLugaresPais.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursalCamino.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursalDijkstra.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursalGrado.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursalKruskal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursalPrim.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="OpcionesSucursalPuntosArt.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Sucursal.h" />
+    <ClInclude Include="Tienda.h" />
+    <ClInclude Include="VentanaPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AcercaDe.resx">
+      <DependentUpon>AcercaDe.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarCiudad.resx">
+      <DependentUpon>AgregarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarCliente.resx">
+      <DependentUpon>AgregarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarMascota.resx">
+      <DependentUpon>AgregarMascota.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarMedicacion.resx">
+      <DependentUpon>AgregarMedicacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarPais.resx">
+      <DependentUpon>AgregarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarTratamiento.resx">
+      <DependentUpon>AgregarTratamiento.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarVisita.resx">
+      <DependentUpon>AgregarVisita.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarCiudad.resx">
+      <DependentUpon>ConsultarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarCliente.resx">
+      <DependentUpon>ConsultarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMascota.resx">
+      <DependentUpon>ConsultarMascota.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMedicacion.resx">
+      <DependentUpon>ConsultarMedicacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarPais.resx">
+      <DependentUpon>ConsultarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarTratamiento.resx">
+      <DependentUpon>ConsultarTratamiento.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarVisita.resx">
+      <DependentUpon>ConsultarVisita.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contacto.resx">
+      <DependentUpon>Contacto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCiudad.resx">
+      <DependentUpon>EliminarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCliente.resx">
+      <DependentUpon>EliminarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarMascota.resx">
+      <DependentUpon>EliminarMascota.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarMedicacion.resx">
+      <DependentUpon>EliminarMedicacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarPais.resx">
+      <DependentUpon>EliminarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarTratamiento.resx">
+      <DependentUpon>EliminarTratamiento.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarVisita.resx">
+      <DependentUpon>EliminarVisita.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCiudad.resx">
+      <DependentUpon>ModificarCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCliente.resx">
+      <DependentUpon>ModificarCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarMascota.resx">
+      <DependentUpon>ModificarMascota.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarMedicacion.resx">
+      <DependentUpon>ModificarMedicacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarPais.resx">
+      <DependentUpon>ModificarPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarTratamiento.resx">
+      <DependentUpon>ModificarTratamiento.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarVisita.resx">
+      <DependentUpon>ModificarVisita.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesCliente.resx">
+      <DependentUpon>OpcionesCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClienteCliente.resx">
+      <DependentUpon>OpcionesClienteCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClienteMascota.resx">
+      <DependentUpon>OpcionesClienteMascota.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClienteVisita.resx">
+      <DependentUpon>OpcionesClienteVisita.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClinica.resx">
+      <DependentUpon>OpcionesClinica.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClinicaMedicacion.resx">
+      <DependentUpon>OpcionesClinicaMedicacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesClinicaTratamiento.resx">
+      <DependentUpon>OpcionesClinicaTratamiento.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesFacturacion.resx">
+      <DependentUpon>OpcionesFacturacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesLugares.resx">
+      <DependentUpon>OpcionesLugares.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesLugaresCiudad.resx">
+      <DependentUpon>OpcionesLugaresCiudad.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesLugaresPais.resx">
+      <DependentUpon>OpcionesLugaresPais.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursal.resx">
+      <DependentUpon>OpcionesSucursal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursalCamino.resx">
+      <DependentUpon>OpcionesSucursalCamino.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursalDijkstra.resx">
+      <DependentUpon>OpcionesSucursalDijkstra.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursalGrado.resx">
+      <DependentUpon>OpcionesSucursalGrado.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursalKruskal.resx">
+      <DependentUpon>OpcionesSucursalKruskal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursalPrim.resx">
+      <DependentUpon>OpcionesSucursalPrim.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesSucursalPuntosArt.resx">
+      <DependentUpon>OpcionesSucursalPuntosArt.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaPrincipal.resx">
+      <DependentUpon>VentanaPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\imagenes\ciudad.png" />
+    <Image Include="..\imagenes\cliente.jpg" />
+    <Image Include="..\imagenes\cliente2.png" />
+    <Image Include="..\imagenes\clinica.jpg" />
+    <Image Include="..\imagenes\correo.png" />
+    <Image Include="..\imagenes\descuento.jpg" />
+    <Image Include="..\imagenes\facturacion.png" />
+    <Image Include="..\imagenes\facturacion2.png" />
+    <Image Include="..\imagenes\instagram.jpg" />
+    <Image Include="..\imagenes\lugares.jpg" />
+    <Image Include="..\imagenes\mascotas.png" />
+    <Image Include="..\imagenes\medicacion.png" />
+    <Image Include="..\imagenes\pais.png" />
+    <Image Include="..\imagenes\saldo.jpg" />
+    <Image Include="..\imagenes\sucursales.jpg" />
+    <Image Include="..\imagenes\telefono.jpg" />
+    <Image Include="..\imagenes\tikTok.png" />
+    <Image Include="..\imagenes\tratamiento.png" />
+    <Image Include="..\imagenes\veterinariaSuli.png" />
+    <Image Include="..\imagenes\visita.png" />
+    <Image Include="..\imagenes\whatsapp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Ciudades.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Clientes.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Distancias1.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Distancias2.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Mascotas.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Medicacion.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Paises.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Sucursales1.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Sucursales2.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Tratamiento.txt" />
+    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Visitas.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
