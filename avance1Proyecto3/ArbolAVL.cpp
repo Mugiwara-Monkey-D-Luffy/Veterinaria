@@ -182,6 +182,88 @@ void ArbolAVL::cargarMascota(ArbolB* ArbolClientes) {
     archivo.close();
 }
 
+int ArbolAVL::calcularBalance(NodoAVL* nodo) {
+    if (nodo == nullptr) {
+        return 0;
+    }
+    return altura(nodo->izquierda) - altura(nodo->derecha);
+}
+
+NodoAVL* encontrarMinimo(NodoAVL* nodo) {
+    NodoAVL* actual = nodo;
+    while (actual->izquierda != nullptr) {
+        actual = actual->izquierda;
+    }
+    return actual;
+}
+
+NodoAVL* ArbolAVL::eliminarNodo(NodoAVL* nodo, int idAnimal) {
+    if (nodo == nullptr) {
+        return nodo;
+    }
+
+    if (idAnimal < nodo->idAnimal) {
+        nodo->izquierda = eliminarNodo(nodo->izquierda, idAnimal);
+    }
+    else if (idAnimal > nodo->idAnimal) {
+        nodo->derecha = eliminarNodo(nodo->derecha, idAnimal);
+    }
+    else {
+        // Encontrado el nodo a eliminar
+
+        if (nodo->izquierda == nullptr || nodo->derecha == nullptr) {
+            NodoAVL* temp = nodo->izquierda ? nodo->izquierda : nodo->derecha;
+
+            if (temp == nullptr) {
+                temp = nodo;
+                nodo = nullptr;
+            }
+            else {
+                *nodo = *temp;
+            }
+
+            delete temp;
+        }
+        else {
+            NodoAVL* minimo = encontrarMinimo(nodo->derecha);
+            nodo->idAnimal = minimo->idAnimal;
+            nodo->derecha = eliminarNodo(nodo->derecha, minimo->idAnimal);
+        }
+    }
+
+    if (nodo == nullptr) {
+        return nodo;
+    }
+
+    int balance = calcularBalance(nodo);
+
+    // Caso de rotación simple a la derecha
+    if (balance > 1 && calcularBalance(nodo->izquierda) >= 0) {
+        return rotacionSimpleDerecha(nodo);
+    }
+
+    // Caso de rotación simple a la izquierda
+    if (balance < -1 && calcularBalance(nodo->derecha) <= 0) {
+        return rotacionSimpleIzquierda(nodo);
+    }
+
+    // Caso de rotación doble a la izquierda
+    if (balance > 1 && calcularBalance(nodo->izquierda) < 0) {
+        return rotacionDobleIzquierda(nodo);
+    }
+
+    // Caso de rotación doble a la derecha
+    if (balance < -1 && calcularBalance(nodo->derecha) > 0) {
+        return rotacionDobleDerecha(nodo);
+    }
+
+    return nodo;
+}
+
+void ArbolAVL::eliminar(int idAnimal) {
+    raiz = eliminarNodo(raiz, idAnimal);
+}
+
 void ArbolAVL::mostrarMascotas() {
     mostrarMascota(raiz);
 }

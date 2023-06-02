@@ -106,9 +106,22 @@ public:
 		this->MaxLlaves = MaxLlaves;
 	}
 
+	ArbolB() {
+		ArbolB(t, MaxLlaves);
+	}
+
+
+	void cargarCliente(ArbolBB* ArbolPaises, ArbolBB* ArbolCuidades);
+
 	void insertarCliente(Cliente* key);
 
 	void mostrarClientes();
+
+	void eliminarCliente(int numCliente);
+
+	void eliminarClienteAux(NodoB* nodo, int numCliente);
+
+	void fusionarNodos(NodoB* nodo, int indiceHermanoDerecho);
 
 	Cliente* buscarCliente(int numCliente);
 
@@ -146,4 +159,5 @@ public:
 	}
 
 	friend class ArbolAVL;
+	friend class ArbolBB;
 };

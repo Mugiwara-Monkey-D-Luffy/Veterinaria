@@ -18,4 +18,5 @@ public:
     void MostrarCliente();
 
     friend class ArbolAVL;
+    friend class ArbolBB;
 };

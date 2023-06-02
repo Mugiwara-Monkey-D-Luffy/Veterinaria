@@ -10,6 +10,7 @@ public:
     int codTratamiento;
     string nombre;
     int precioUnitario;
+    int cantidad;
 
     Color color;
     NodoRN* izq;
@@ -20,6 +21,7 @@ public:
         codTratamiento = 0;
         nombre = "";
         precioUnitario = 0;
+        cantidad = 0;
 
         color = RED;
         izq = NULL;

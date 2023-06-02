@@ -44,6 +44,12 @@ public:
 
     void cargarMascota(ArbolB* ArbolClientes);
 
+    int calcularBalance(NodoAVL* nodo);
+
+    NodoAVL* eliminarNodo(NodoAVL* nodo, int idAnimal);
+
+    void eliminar(int idAnimal);
+
     void mostrarMascotas();
 
     void ReportesMascotasCliente(int idCliente) {

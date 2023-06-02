@@ -18,6 +18,9 @@ public:
     NodoBB* buscarNodoVisita(NodoBB* nodo, int valorBuscado);
 
 
+    bool InsertaNodo(int codPais, string nombre, NodoBB* nuevoNodo);
+    bool InsertaPais(int codPais, string nombre);
+
     void mostrarPais(NodoBB* nodo);
     void mostrarCuidad(NodoBB* nodo);
     void mostrarVisita(NodoBB* nodo);
@@ -111,8 +114,11 @@ public:
 
     void cargarPais();
     void cargarCuidad(ArbolBB* ArbolPaises);
-
     void cargarVisita(ArbolAVL* ArbolMascotas);
+
+    void eliminarPais(int pCodPais);
+    void eliminarCiudad(int pCodCuidad);
+    void eliminarVisita(int pCodVisita);
 
     void mostrarPaises();
     void mostrarCuidades();

@@ -1,4 +1,5 @@
 #pragma once
+#include "Tienda.h"
 
 namespace avance1Proyecto3 {
 
@@ -17,6 +18,17 @@ namespace avance1Proyecto3 {
 	public:
 		AgregarTratamiento(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
+		Tienda* tienda;
+
+		AgregarTratamiento(Tienda* tienda)
+		{
+			this->tienda = tienda;
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -143,6 +155,7 @@ namespace avance1Proyecto3 {
 			this->button1->TabIndex = 82;
 			this->button1->Text = L"Cargar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AgregarTratamiento::button1_Click);
 			// 
 			// label3
 			// 
@@ -177,5 +190,46 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//codigo
+		String^ obtenerCodigo = this->textBox4->Text;
+		string ObtenerCodigo;
+		MarshalString(obtenerCodigo, ObtenerCodigo);
+		int cod1 = atoi(ObtenerCodigo.c_str());
+
+		//nombre
+		String^ obtenerNombre = this->textBox10->Text;
+		string ObtenerNombre;
+
+		//precio
+		String^ obtenerPrecio = this->textBox6->Text;
+		string ObtenerPrecio;
+		MarshalString(obtenerPrecio, ObtenerPrecio);
+		int cod2 = atoi(ObtenerPrecio.c_str());
+
+		//cantidad
+		String^ obtenerCantidad = this->textBox5->Text;
+		string ObtenerCantidad;
+		MarshalString(obtenerCantidad, ObtenerCantidad);
+		int cod3 = atoi(ObtenerCantidad.c_str());
+
+		NodoRN* nuevoNodo = new NodoRN();
+		nuevoNodo->codTratamiento = cod1;
+		nuevoNodo->nombre = ObtenerNombre;
+		nuevoNodo->precioUnitario = cod2;
+		//nuevoNodo->cantidad = cod3;
+
+
+		this->tienda->tratamientos->insertarTratamiento(nuevoNodo);
+
+		MessageBox::Show("Se a agregado el tratamiento correctamente");
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
+};
 }

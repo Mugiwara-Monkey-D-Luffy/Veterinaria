@@ -1,4 +1,5 @@
 #pragma once
+#include "Tienda.h"
 
 namespace avance1Proyecto3 {
 
@@ -17,6 +18,17 @@ namespace avance1Proyecto3 {
 	public:
 		ModificarCiudad(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
+		Tienda* tienda;
+
+		ModificarCiudad(Tienda* tienda)
+		{
+			this->tienda = tienda;
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -91,6 +103,7 @@ namespace avance1Proyecto3 {
 			this->button1->TabIndex = 19;
 			this->button1->Text = L"Modificar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ModificarCiudad::button1_Click);
 			// 
 			// textBox2
 			// 
@@ -155,5 +168,34 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ obtenerCodPais = this->textBox1->Text;
+		string ObtenerCodPais;
+		MarshalString(obtenerCodPais, ObtenerCodPais);
+
+		int cod1 = atoi(ObtenerCodPais.c_str());
+
+		String^ obtenerCodCiudad = this->textBox2->Text;
+		string ObtenerCodCiudad;
+		MarshalString(obtenerCodCiudad, ObtenerCodCiudad);
+
+		int cod2 = atoi(ObtenerCodCiudad.c_str());
+
+		String^ obtenerNombreCiudad = this->textBox3->Text;
+		string ObtenerNombreCiudad;
+		MarshalString(obtenerNombreCiudad, ObtenerNombreCiudad);
+
+		NodoBB* nuevoNodo = new NodoBB(cod1, msclr::interop::marshal_as<string>(this->textBox2->Text));
+		this->tienda->paises->buscarCiudad(cod2)->nombre = ObtenerNombreCiudad;
+
+		MessageBox::Show("Se a modificado la ciudad correctamente");
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
+};
 }

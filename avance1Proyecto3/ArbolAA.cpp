@@ -167,14 +167,15 @@ void ArbolAA::cargarMascota(ArbolAVL* ArbolMascotas) {
 
         // Separar la línea en 13 parte y los asigna cada parte a un atributo
         aux->idAnimal = stoi(linea.substr(0, pos1));
-        aux->codMedicacion = stoi(linea.substr(pos1 + 1, pos2 - pos1 - 1));
-        aux->dia = stoi(linea.substr(pos2 + 1, pos3 - pos2 - 1));
-        aux->mes = stoi(linea.substr(pos3 + 1, pos4 - pos3 - 1));
-        aux->anio = stoi(linea.substr(pos4 + 1, pos5 - pos4 - 1));
-        aux->listaMedicamento = stoi(linea.substr(pos5 + 1, pos6 - pos5 - 1));
+        aux->dia = stoi(linea.substr(pos1 + 1, pos2 - pos1 - 1));
+        aux->mes = stoi(linea.substr(pos2 + 1, pos3 - pos2 - 1));
+        aux->anio = stoi(linea.substr(pos3 + 1, pos4 - pos3 - 1));
+        aux->codTratamiento = stoi(linea.substr(pos4 + 1, pos5 - pos4 - 1));
+        aux->codMedicacion = stoi(linea.substr(pos5 + 1, pos6 - pos5 - 1));
         aux->costoUnitario = stoi(linea.substr(pos6 + 1, pos7 - pos6 - 1));
         aux->cantidad = stoi(linea.substr(pos7 + 1, pos8 - pos7 - 1));
         aux->costoTotal = stoi(linea.substr(pos8 + 1));
+
 
         if (ArbolMascotas->buscarMascota(aux->idAnimal) == NULL) {
             continue;
@@ -187,6 +188,44 @@ void ArbolAA::cargarMascota(ArbolAVL* ArbolMascotas) {
 
     // Cerrar el archivo
     archivo.close();
+}
+
+void ArbolAA::eliminarNodoMedicaion(NodoAA*& nodo, int pCodMedicaion) {
+    if (nodo == nullptr)
+        return;
+
+    if (pCodMedicaion < nodo->codMedicacion) {
+        eliminarNodoMedicaion(nodo->izquierda, pCodMedicaion);
+    }
+    else if (pCodMedicaion > nodo->codMedicacion) {
+        eliminarNodoMedicaion(nodo->derecha, pCodMedicaion);
+    }
+    else {
+        if (nodo->izquierda == nullptr && nodo->derecha == nullptr) {
+            delete nodo;
+            nodo = nullptr;
+        }
+        else if (nodo->izquierda == nullptr) {
+            NodoAA* temp = nodo;
+            nodo = nodo->derecha;
+            delete temp;
+        }
+        else if (nodo->derecha == nullptr) {
+            NodoAA* temp = nodo;
+            nodo = nodo->izquierda;
+            delete temp;
+        }
+        else {
+            NodoAA* sucesor = nodo->derecha;
+            while (sucesor->izquierda != nullptr) {
+                sucesor = sucesor->izquierda;
+            }
+            nodo->codMedicacion = sucesor->codMedicacion;
+            eliminarNodoMedicaion(nodo->derecha, sucesor->codMedicacion);
+        }
+    }
+
+    rebalancear(nodo);
 }
 
 void NodoAA::MostrarMedicacion() {

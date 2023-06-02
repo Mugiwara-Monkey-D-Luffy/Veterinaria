@@ -40,6 +40,12 @@ public:
 
     void cargarTratamiento();
 
+    void reemplazarNodo(NodoRN* nodoEliminar, NodoRN* nodoReemplazo);
+
+    void eliminar(int pCodTratamiento);
+
+    void rebalancearEliminar(NodoRN* nodo, NodoRN* padre);
+
     void mostrarTratamientos();
 
     void reporteTratamientos() {

@@ -158,6 +158,7 @@ namespace avance1Proyecto3 {
 			this->button1->TabIndex = 95;
 			this->button1->Text = L"Modificar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ModificarMedicacion::button1_Click);
 			// 
 			// label3
 			// 
@@ -211,5 +212,7 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

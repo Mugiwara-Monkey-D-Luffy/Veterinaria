@@ -12,6 +12,7 @@ public:
     int mes;
     int anio;
     int listaMedicamento;
+    int codTratamiento;
     int costoUnitario;
     int cantidad;
     int costoTotal;

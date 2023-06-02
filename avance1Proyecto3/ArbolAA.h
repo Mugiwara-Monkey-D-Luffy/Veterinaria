@@ -42,6 +42,8 @@ public:
 
     void cargarMascota(ArbolAVL* ArbolMascotas);
 
+    void eliminarNodoMedicaion(NodoAA*& nodo, int pCodMedicaion);
+
     void MedicamentoMascota(int idAnimal) {
 
         ofstream archivo("Reporte Medicamentos de Animal.txt");

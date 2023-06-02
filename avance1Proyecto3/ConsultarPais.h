@@ -23,6 +23,19 @@ namespace avance1Proyecto3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+	private: System::Windows::Forms::TextBox^ visor;
+	public:
+
+		Tienda* tienda;
+
+		ConsultarPais(Tienda* tienda)
+		{
+			this->tienda = tienda;
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
 
 	protected:
 		/// <summary>
@@ -60,11 +73,12 @@ namespace avance1Proyecto3 {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->visor = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(202, 86);
+			this->button1->Location = System::Drawing::Point(391, 77);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 35);
 			this->button1->TabIndex = 11;
@@ -76,7 +90,7 @@ namespace avance1Proyecto3 {
 			// 
 			this->textBox1->Location = System::Drawing::Point(85, 49);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(192, 22);
+			this->textBox1->Size = System::Drawing::Size(381, 22);
 			this->textBox1->TabIndex = 9;
 			// 
 			// label3
@@ -99,11 +113,20 @@ namespace avance1Proyecto3 {
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Código:";
 			// 
+			// visor
+			// 
+			this->visor->Location = System::Drawing::Point(17, 137);
+			this->visor->Multiline = true;
+			this->visor->Name = L"visor";
+			this->visor->Size = System::Drawing::Size(449, 60);
+			this->visor->TabIndex = 12;
+			// 
 			// ConsultarPais
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(296, 134);
+			this->ClientSize = System::Drawing::Size(478, 216);
+			this->Controls->Add(this->visor);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label3);
@@ -116,13 +139,21 @@ namespace avance1Proyecto3 {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ codBuscar = this->textBox1->Text;
-		string codigo;
-		int cod = std::stoi(codigo);
+		String^ obtenerCodPais = this->textBox1->Text;
+		string ObtenerCodPais;
+		MarshalString(obtenerCodPais, ObtenerCodPais);
 
-		//ArbolBB::buscarPais(cod);
-		//String^ codigo = gcnew String(Receptor::dato1.c_str());
-		MessageBox::Show("Nombre del país: " + "");
+		int cod = atoi(ObtenerCodPais.c_str());
+
+		NodoBB* nuevoNodo = new NodoBB(cod, msclr::interop::marshal_as<string>(this->textBox1->Text));
+		this->visor->Text = gcnew String((this->tienda->paises->buscarPais(cod))->nombre.c_str());
 	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
 };
 }

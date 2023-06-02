@@ -12,8 +12,9 @@ using namespace System::Windows::Forms;
 
 [STAThreadAttribute]
 void Main() {
-    
-	//Controlador::inicializador();
+
+
+
 
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);

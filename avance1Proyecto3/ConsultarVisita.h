@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include "Tienda.h"
 
 namespace avance1Proyecto3 {
 
@@ -23,6 +25,17 @@ namespace avance1Proyecto3 {
 			//
 		}
 
+		Tienda* tienda;
+
+		ConsultarVisita(Tienda* tienda)
+		{
+			this->tienda = tienda;
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -41,6 +54,7 @@ namespace avance1Proyecto3 {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ visor;
 
 	private:
 		/// <summary>
@@ -61,13 +75,14 @@ namespace avance1Proyecto3 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->visor = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// textBox10
 			// 
 			this->textBox10->Location = System::Drawing::Point(177, 44);
 			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(192, 22);
+			this->textBox10->Size = System::Drawing::Size(289, 22);
 			this->textBox10->TabIndex = 92;
 			// 
 			// label11
@@ -83,7 +98,7 @@ namespace avance1Proyecto3 {
 			// 
 			this->textBox4->Location = System::Drawing::Point(177, 81);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(192, 22);
+			this->textBox4->Size = System::Drawing::Size(289, 22);
 			this->textBox4->TabIndex = 89;
 			// 
 			// label5
@@ -97,12 +112,13 @@ namespace avance1Proyecto3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(294, 126);
+			this->button1->Location = System::Drawing::Point(391, 125);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 35);
 			this->button1->TabIndex = 82;
 			this->button1->Text = L"Consultar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ConsultarVisita::button1_Click);
 			// 
 			// label3
 			// 
@@ -115,11 +131,20 @@ namespace avance1Proyecto3 {
 			this->label3->TabIndex = 81;
 			this->label3->Text = L"Consultar Visita";
 			// 
+			// visor
+			// 
+			this->visor->Location = System::Drawing::Point(17, 181);
+			this->visor->Multiline = true;
+			this->visor->Name = L"visor";
+			this->visor->Size = System::Drawing::Size(449, 60);
+			this->visor->TabIndex = 93;
+			// 
 			// ConsultarVisita
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(390, 172);
+			this->ClientSize = System::Drawing::Size(483, 263);
+			this->Controls->Add(this->visor);
 			this->Controls->Add(this->textBox10);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->textBox4);
@@ -133,5 +158,22 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ obtenerCodPais = this->textBox4->Text;
+		string ObtenerCodPais;
+		MarshalString(obtenerCodPais, ObtenerCodPais);
+
+		int cod = atoi(ObtenerCodPais.c_str());
+
+		ArbolBB* nuevoNodo = new ArbolBB();
+		this->visor->Text = gcnew String((this->tienda->visitas->buscarVisita(cod))->nombre.c_str());
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
+};
 }

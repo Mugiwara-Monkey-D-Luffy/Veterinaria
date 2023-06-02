@@ -1,4 +1,5 @@
 #pragma once
+#include "Tienda.h"
 
 namespace avance1Proyecto3 {
 
@@ -22,6 +23,30 @@ namespace avance1Proyecto3 {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+	private: System::Windows::Forms::TextBox^ textBox11;
+	public:
+	private: System::Windows::Forms::TextBox^ textBox12;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label17;
+	private: System::Windows::Forms::TextBox^ textBox13;
+	private: System::Windows::Forms::TextBox^ textBox14;
+	private: System::Windows::Forms::TextBox^ textBox15;
+	private: System::Windows::Forms::Label^ label18;
+
+		Tienda* tienda;
+
+		AgregarMascota(Tienda* tienda)
+		{
+			this->tienda = tienda;
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
 
 	protected:
 		/// <summary>
@@ -37,7 +62,7 @@ namespace avance1Proyecto3 {
 	private: System::Windows::Forms::TextBox^ textBox7;
 	protected:
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::TextBox^ textBox8;
+
 	private: System::Windows::Forms::TextBox^ textBox9;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label10;
@@ -73,7 +98,6 @@ namespace avance1Proyecto3 {
 		{
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
@@ -93,11 +117,23 @@ namespace avance1Proyecto3 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox14 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox15 = (gcnew System::Windows::Forms::TextBox());
+			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// textBox7
 			// 
-			this->textBox7->Location = System::Drawing::Point(191, 326);
+			this->textBox7->Location = System::Drawing::Point(191, 421);
 			this->textBox7->Name = L"textBox7";
 			this->textBox7->Size = System::Drawing::Size(192, 22);
 			this->textBox7->TabIndex = 55;
@@ -105,22 +141,15 @@ namespace avance1Proyecto3 {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(28, 332);
+			this->label8->Location = System::Drawing::Point(28, 427);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(42, 16);
 			this->label8->TabIndex = 54;
 			this->label8->Text = L"Color:";
 			// 
-			// textBox8
-			// 
-			this->textBox8->Location = System::Drawing::Point(191, 399);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(192, 22);
-			this->textBox8->TabIndex = 53;
-			// 
 			// textBox9
 			// 
-			this->textBox9->Location = System::Drawing::Point(191, 362);
+			this->textBox9->Location = System::Drawing::Point(191, 457);
 			this->textBox9->Name = L"textBox9";
 			this->textBox9->Size = System::Drawing::Size(192, 22);
 			this->textBox9->TabIndex = 52;
@@ -128,7 +157,7 @@ namespace avance1Proyecto3 {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(28, 402);
+			this->label9->Location = System::Drawing::Point(28, 497);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(153, 16);
 			this->label9->TabIndex = 51;
@@ -137,7 +166,7 @@ namespace avance1Proyecto3 {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(28, 365);
+			this->label10->Location = System::Drawing::Point(28, 460);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(65, 16);
 			this->label10->TabIndex = 50;
@@ -209,23 +238,24 @@ namespace avance1Proyecto3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(308, 441);
+			this->button1->Location = System::Drawing::Point(308, 626);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 35);
 			this->button1->TabIndex = 41;
 			this->button1->Text = L"Cargar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AgregarMascota::button1_Click);
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(191, 288);
+			this->textBox2->Location = System::Drawing::Point(191, 383);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(192, 22);
 			this->textBox2->TabIndex = 40;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(191, 251);
+			this->textBox1->Location = System::Drawing::Point(191, 288);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(192, 22);
 			this->textBox1->TabIndex = 39;
@@ -244,7 +274,7 @@ namespace avance1Proyecto3 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(28, 291);
+			this->label2->Location = System::Drawing::Point(28, 386);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(41, 16);
 			this->label2->TabIndex = 37;
@@ -275,16 +305,124 @@ namespace avance1Proyecto3 {
 			this->label11->TabIndex = 56;
 			this->label11->Text = L"Identificación del Animal:";
 			// 
+			// textBox11
+			// 
+			this->textBox11->Location = System::Drawing::Point(191, 316);
+			this->textBox11->Name = L"textBox11";
+			this->textBox11->Size = System::Drawing::Size(192, 22);
+			this->textBox11->TabIndex = 58;
+			// 
+			// textBox12
+			// 
+			this->textBox12->Location = System::Drawing::Point(191, 344);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(192, 22);
+			this->textBox12->TabIndex = 59;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(28, 294);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(31, 16);
+			this->label12->TabIndex = 60;
+			this->label12->Text = L"Día:";
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Location = System::Drawing::Point(28, 322);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(36, 16);
+			this->label13->TabIndex = 61;
+			this->label13->Text = L"Mes:";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(28, 344);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(34, 16);
+			this->label14->TabIndex = 62;
+			this->label14->Text = L"Año:";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(28, 588);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(34, 16);
+			this->label15->TabIndex = 68;
+			this->label15->Text = L"Año:";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(28, 566);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(36, 16);
+			this->label16->TabIndex = 67;
+			this->label16->Text = L"Mes:";
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->Location = System::Drawing::Point(28, 538);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(31, 16);
+			this->label17->TabIndex = 66;
+			this->label17->Text = L"Día:";
+			// 
+			// textBox13
+			// 
+			this->textBox13->Location = System::Drawing::Point(191, 588);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(192, 22);
+			this->textBox13->TabIndex = 65;
+			// 
+			// textBox14
+			// 
+			this->textBox14->Location = System::Drawing::Point(191, 560);
+			this->textBox14->Name = L"textBox14";
+			this->textBox14->Size = System::Drawing::Size(192, 22);
+			this->textBox14->TabIndex = 64;
+			// 
+			// textBox15
+			// 
+			this->textBox15->Location = System::Drawing::Point(191, 532);
+			this->textBox15->Name = L"textBox15";
+			this->textBox15->Size = System::Drawing::Size(192, 22);
+			this->textBox15->TabIndex = 63;
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(28, 421);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(42, 16);
+			this->label18->TabIndex = 69;
+			this->label18->Text = L"Color:";
+			// 
 			// AgregarMascota
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(402, 489);
+			this->ClientSize = System::Drawing::Size(402, 679);
+			this->Controls->Add(this->label18);
+			this->Controls->Add(this->label15);
+			this->Controls->Add(this->label16);
+			this->Controls->Add(this->label17);
+			this->Controls->Add(this->textBox13);
+			this->Controls->Add(this->textBox14);
+			this->Controls->Add(this->textBox15);
+			this->Controls->Add(this->label14);
+			this->Controls->Add(this->label13);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->textBox12);
+			this->Controls->Add(this->textBox11);
 			this->Controls->Add(this->textBox10);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->textBox7);
-			this->Controls->Add(this->label8);
-			this->Controls->Add(this->textBox8);
 			this->Controls->Add(this->textBox9);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label10);
@@ -309,5 +447,105 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//numero del cliente
+		String^ obtenerNumCliente = this->textBox4->Text;
+		string ObtenerNumCliente;
+		MarshalString(obtenerNumCliente, ObtenerNumCliente);
+		int cod1 = atoi(ObtenerNumCliente.c_str());
+
+		//id animal
+		String^ obtenerIdAnimal = this->textBox10->Text;
+		string ObtenerIdAnimal;
+		MarshalString(obtenerIdAnimal, ObtenerIdAnimal);
+		int cod2 = atoi(ObtenerIdAnimal.c_str());
+
+		//nombre
+		String^ obtenerNombre = this->textBox6->Text;
+		string ObtenerNombre;
+
+		//tipo mascota
+		String^ obtenerTipoMascota = this->textBox5->Text;
+		string ObtenerTipoMascota;
+
+		//raza
+		String^ obtenerRaza = this->textBox3->Text;
+		string ObtenerRaza;
+
+		//dia de nacimiento
+		String^ obtenerDiaNacimiento = this->textBox1->Text;
+		string ObtenerDiaNacimiento;
+		MarshalString(obtenerDiaNacimiento, ObtenerDiaNacimiento);
+		int cod3 = atoi(ObtenerDiaNacimiento.c_str());
+
+		//mes de nacimiento
+		String^ obtenerMesNacimiento = this->textBox11->Text;
+		string ObtenerMesNacimiento;
+		MarshalString(obtenerMesNacimiento, ObtenerMesNacimiento);
+		int cod4 = atoi(ObtenerMesNacimiento.c_str());
+
+		//año de nacimiento
+		String^ obtenerAnioNacimiento = this->textBox12->Text;
+		string ObtenerAnioNacimiento;
+		MarshalString(obtenerAnioNacimiento, ObtenerAnioNacimiento);
+		int cod5 = atoi(ObtenerAnioNacimiento.c_str());
+		
+		//sexo
+		String^ obtenerSexo = this->textBox2->Text;
+		string ObtenerSexo;
+
+		//color
+		String^ obtenerColor = this->textBox7->Text;
+		string ObtenerColor;
+
+		//castrado
+		String^ obtenerCastrado = this->textBox9->Text;
+		string ObtenerCastrado;
+
+		//dia de utl visita
+		String^ obtenerDiaUltVisita = this->textBox15->Text;
+		string ObtenerDiaUltVisita;
+		MarshalString(obtenerDiaUltVisita, ObtenerDiaUltVisita);
+		int cod6 = atoi(ObtenerDiaUltVisita.c_str());
+
+		//mes de utl visita
+		String^ obtenerMesUltVisita = this->textBox14->Text;
+		string ObtenerMesUltVisita;
+		MarshalString(obtenerMesUltVisita, ObtenerMesUltVisita);
+		int cod7 = atoi(ObtenerMesUltVisita.c_str());
+
+		//año de utl visita
+		String^ obtenerAnioUltVisita = this->textBox13->Text;
+		string ObtenerAnioUltVisita;
+		MarshalString(obtenerAnioUltVisita, ObtenerAnioUltVisita);
+		int cod8 = atoi(ObtenerAnioUltVisita.c_str());
+
+		NodoAVL* nuevoNodo = new NodoAVL();
+		nuevoNodo->numCliente = cod1;
+		nuevoNodo->idAnimal = cod3;
+		nuevoNodo->nombre = ObtenerNombre;
+		nuevoNodo->tipoMascota = ObtenerTipoMascota;
+		nuevoNodo->raza = ObtenerRaza;
+		nuevoNodo->diaNacimiento = cod3;
+		nuevoNodo->mesNacimiento = cod4;
+		nuevoNodo->anioNacimiento = cod5;
+		nuevoNodo->sexo = ObtenerSexo;
+		nuevoNodo->color = ObtenerColor;
+		nuevoNodo->castrado = ObtenerCastrado;
+		nuevoNodo->diaVisita = cod6;
+		nuevoNodo->mesVisita = cod7;
+		nuevoNodo->anioVisita = cod8;
+
+		this->tienda->mascotas->insertarMascota(nuevoNodo);
+
+		MessageBox::Show("Se a agregado la mascota correctamente");
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
+};
 }

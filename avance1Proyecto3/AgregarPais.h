@@ -163,6 +163,8 @@ namespace avance1Proyecto3 {
 
 		NodoBB* nuevoNodo = new NodoBB(cod, msclr::interop::marshal_as<string>(this->textBox2->Text));
 		this->tienda->paises->insertarPais(nuevoNodo);
+		this->tienda->paises->buscarPais(cod)->nombre = ObtenerNombrePais;
+
 
 		MessageBox::Show("Se a agregado el País correctamente");
 	}

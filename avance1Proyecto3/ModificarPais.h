@@ -23,6 +23,17 @@ namespace avance1Proyecto3 {
 			//
 		}
 
+		Tienda* tienda;
+
+		ModificarPais(Tienda* tienda)
+		{
+			this->tienda = tienda;
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -71,6 +82,7 @@ namespace avance1Proyecto3 {
 			this->button1->TabIndex = 11;
 			this->button1->Text = L"Modificar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ModificarPais::button1_Click);
 			// 
 			// textBox2
 			// 
@@ -133,5 +145,30 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ obtenerCodPais = this->textBox1->Text;
+		string ObtenerCodPais;
+		MarshalString(obtenerCodPais, ObtenerCodPais);
+
+		int cod = atoi(ObtenerCodPais.c_str());
+
+		String^ obtenerNombrePais = this->textBox2->Text;
+		string ObtenerNombrePais;
+		MarshalString(obtenerNombrePais, ObtenerNombrePais);
+
+		NodoBB* nuevoNodo = new NodoBB(cod, msclr::interop::marshal_as<string>(this->textBox2->Text));
+		this->tienda->paises->buscarPais(cod)->nombre = ObtenerNombrePais;
+
+
+
+		MessageBox::Show("Se a modificado el País correctamente");
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
+};
 }

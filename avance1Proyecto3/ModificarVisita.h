@@ -1,4 +1,5 @@
 #pragma once
+#include "Tienda.h"
 
 namespace avance1Proyecto3 {
 
@@ -17,6 +18,17 @@ namespace avance1Proyecto3 {
 	public:
 		ModificarVisita(void)
 		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
+		Tienda* tienda;
+
+		ModificarVisita(Tienda* tienda)
+		{
+			this->tienda = tienda;
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -125,6 +137,7 @@ namespace avance1Proyecto3 {
 			this->button1->TabIndex = 82;
 			this->button1->Text = L"Modificar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &ModificarVisita::button1_Click);
 			// 
 			// label3
 			// 
@@ -167,5 +180,36 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//cod visita
+		String^ obtenerCodVisita = this->textBox4->Text;
+		string ObtenerCodVisita;
+		MarshalString(obtenerCodVisita, ObtenerCodVisita);
+		int cod1 = atoi(ObtenerCodVisita.c_str());
+
+		//id animal
+		String^ obtenerIdAnimal = this->textBox10->Text;
+		string ObtenerIdAnimal;
+		MarshalString(obtenerIdAnimal, ObtenerIdAnimal);
+		int cod2 = atoi(ObtenerIdAnimal.c_str());
+
+		//forma de pago
+		String^ obtenerFormaPago = this->textBox3->Text;
+		string ObtenerFormaPago;
+		MarshalString(obtenerFormaPago, ObtenerFormaPago);
+		int cod7 = atoi(ObtenerFormaPago.c_str());
+
+		NodoBB* nuevoNodo = new NodoBB();
+		this->tienda->visitas->buscarVisita(cod1)->formatoPago = cod7;
+
+		MessageBox::Show("Se a modificado la visita correctamente");
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
+};
 }

@@ -136,15 +136,15 @@ namespace avance1Proyecto3 {
 		f->Show();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		ConsultarPais^ f = gcnew ConsultarPais();
+		ConsultarPais^ f = gcnew ConsultarPais(this->tienda);
 		f->Show();
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		ModificarPais^ f = gcnew ModificarPais();
+		ModificarPais^ f = gcnew ModificarPais(this->tienda);
 		f->Show();
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		EliminarPais^ f = gcnew EliminarPais();
+		EliminarPais^ f = gcnew EliminarPais(this->tienda);
 		f->Show();
 	}
 };

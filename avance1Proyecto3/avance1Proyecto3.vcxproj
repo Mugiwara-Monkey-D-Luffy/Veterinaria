@@ -474,19 +474,6 @@
     <Image Include="..\imagenes\visita.png" />
     <Image Include="..\imagenes\whatsapp.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Ciudades.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Clientes.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Distancias1.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Distancias2.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Mascotas.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Medicacion.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Paises.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Sucursales1.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Sucursales2.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Tratamiento.txt" />
-    <Text Include="..\..\..\..\..\..\..\..\..\Downloads\Visitas.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

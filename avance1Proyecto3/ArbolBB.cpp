@@ -26,6 +26,7 @@ NodoBB* ArbolBB::insertarNodoPais(NodoBB* nodo, NodoBB* nuevoNodo) {
     return nodo;
 }
 
+
 NodoBB* ArbolBB::insertarNodoCuidad(NodoBB* nodo, NodoBB* nuevoNodo) {
     // Si el árbol está vacío, el nuevo nodo se convierte en la raíz
     if (nodo == NULL) {
@@ -62,7 +63,7 @@ NodoBB* ArbolBB::insertarNodoVisita(NodoBB* nodo, NodoBB* nuevoNodo) {
 
 NodoBB* ArbolBB::buscarNodoPais(NodoBB* nodo, int valorBuscado) {
     // Si el nodo actual es nulo o si el valor del nodo actual es igual al valor buscado, devuelve el nodo actual
-    if (nodo == NULL || nodo->codPais == valorBuscado) {
+    if (nodo == NULL || (nodo != NULL && nodo->codPais == valorBuscado)) {
         return nodo;
     }
     // Si el valor buscado es menor que el valor del nodo actual, busca en la rama izquierda
@@ -74,6 +75,41 @@ NodoBB* ArbolBB::buscarNodoPais(NodoBB* nodo, int valorBuscado) {
         return buscarNodoPais(nodo->derecha, valorBuscado);
     }
 }
+
+bool ArbolBB::InsertaNodo(int codPais, string nombre, NodoBB* nuevoNodo) {
+    bool result = false;
+
+    if (codPais < nuevoNodo->codPais) {
+        if (nuevoNodo->izquierda == NULL) {
+            nuevoNodo->izquierda = new NodoBB(codPais, nombre);
+            result = true;
+        }
+        else {
+            result = InsertaNodo(codPais, nombre, nuevoNodo->izquierda);
+        }
+    }
+    else if (codPais > nuevoNodo->codPais) {
+        if (nuevoNodo->derecha == NULL) {
+            nuevoNodo->derecha = new NodoBB(codPais, nombre);
+            result = true;
+        }
+        else {
+            result = InsertaNodo(codPais, nombre, nuevoNodo->derecha);
+        }
+    }
+    return result;
+}
+
+bool ArbolBB::InsertaPais(int codPais, string nombre) {
+    if (this->raiz == NULL) {
+        this->raiz = new NodoBB(codPais, nombre);
+        return true;
+    }
+    else {
+        return this->InsertaNodo(codPais, nombre, this->raiz);
+    }
+}
+
 
 NodoBB* ArbolBB::buscarNodoCuidad(NodoBB* nodo, int valorBuscado) {
     // Si el nodo actual es nulo o si el valor del nodo actual es igual al valor buscado, devuelve el nodo actual
@@ -187,19 +223,19 @@ void ArbolBB::cargarPais() {
         size_t pos = linea.find(';');
 
         // Crear un nuevo objeto Nodo para almacenar los datos del artista
-        NodoBB* aux = new NodoBB();
+        //NodoBB* aux = new NodoBB();
 
         // Separar la línea en tres partes: código del Pais y nombre
-        aux->codPais = stoi(linea.substr(0, pos));
-        aux->nombre = linea.substr(pos + 1);
+        /*aux->codPais = stoi(linea.substr(0, pos));
+        aux->nombre = linea.substr(pos + 1);*/
 
         // Insertar el nuevo Nodo en la lista doble
 
-        if (buscarPais(aux->codPais) == NULL) {
-            insertarPais(aux);
-        }
-    }
+        //if (buscarPais(aux->codPais) == NULL) {
+            InsertaPais(stoi(linea.substr(0, pos)), linea.substr(pos + 1));
+        //}
 
+    }
     // Cerrar el archivo
     archivo.close();
 }
@@ -311,6 +347,108 @@ void ArbolBB::cargarVisita(ArbolAVL* ArbolMascotas) {
     // Cerrar el archivo
     archivo.close();
 }
+
+NodoBB* encontrarMasPequenio(NodoBB* node) {
+        NodoBB* current = node;
+        while (current && current->derecha != nullptr) {
+            current = current->derecha;
+        }
+        return current;
+    }
+NodoBB* eliminarPais(NodoBB* root, int pCodPais) {
+        if (root == nullptr) {
+            return root;
+        }
+        if (pCodPais < root->codPais) {
+            root->izquierda = eliminarPais(root->izquierda, pCodPais);
+        } else if (pCodPais > root->codPais) {
+            root->derecha = eliminarPais(root->derecha, pCodPais);
+        } else {
+            if (root->izquierda == nullptr) {
+                NodoBB* temp = root->derecha;
+                delete root;
+                return temp;
+            } else if (root->derecha == nullptr) {
+                NodoBB* temp = root->derecha;
+                delete root;
+                return temp;
+            }
+
+            NodoBB* minNode = encontrarMasPequenio(root->derecha);
+            root->codPais = minNode->codPais;
+            root->nombre = minNode->nombre;
+            root->derecha = eliminarPais(root->derecha, minNode->codPais);
+        }
+        return root;
+    }
+NodoBB* eliminarCuidad(NodoBB* root, int pCodCuidad) {
+        if (root == nullptr) {
+            return root;
+        }
+        if (pCodCuidad < root->codCuidad) {
+            root->izquierda = eliminarPais(root->izquierda, pCodCuidad);
+        } else if (pCodCuidad > root->codCuidad) {
+            root->derecha = eliminarPais(root->derecha, pCodCuidad);
+        } else {
+            if (root->izquierda == nullptr) {
+                NodoBB* temp = root->derecha;
+                delete root;
+                return temp;
+            } else if (root->derecha == nullptr) {
+                NodoBB* temp = root->derecha;
+                delete root;
+                return temp;
+            }
+
+            NodoBB* minNode = encontrarMasPequenio(root->derecha);
+            root->codCuidad = minNode->codCuidad;
+            root->nombre = minNode->nombre;
+            root->codPais = minNode->codPais;
+            root->derecha = eliminarPais(root->derecha, minNode->codCuidad);
+        }
+        return root;
+    }
+NodoBB* eliminarVisita(NodoBB* root, int pCodVisita) {
+        if (root == nullptr) {
+            return root;
+        }
+        if (pCodVisita < root->codVisita) {
+            root->izquierda = eliminarPais(root->izquierda, pCodVisita);
+        } else if (pCodVisita > root->codVisita) {
+            root->derecha = eliminarPais(root->derecha, pCodVisita);
+        } else {
+            if (root->izquierda == nullptr) {
+                NodoBB* temp = root->derecha;
+                delete root;
+                return temp;
+            } else if (root->derecha == nullptr) {
+                NodoBB* temp = root->derecha;
+                delete root;
+                return temp;
+            }
+
+            NodoBB* minNode = encontrarMasPequenio(root->derecha);
+            root->codVisita = minNode->codVisita;
+            root->idAnimal = minNode->idAnimal;
+            root->dia = minNode->dia;
+            root->mes = minNode->mes;
+            root->anio = minNode->anio;
+            root->totalFactura = minNode->totalFactura;
+            root->formatoPago = minNode->formatoPago;
+            root->derecha = eliminarPais(root->derecha, minNode->codVisita);
+        }
+        return root;
+    }
+
+void ArbolBB::eliminarPais(int pCodPais) {
+        eliminarCuidad(raiz, pCodPais);
+    }
+void ArbolBB::eliminarCiudad(int pCodCuidad){
+        eliminarCuidad(raiz,pCodCuidad);
+    }
+void ArbolBB::eliminarVisita(int pCodVisita){
+        eliminarCuidad(raiz, pCodVisita);
+    }
 
 void ArbolBB::mostrarPaises() {
     mostrarPais(raiz);

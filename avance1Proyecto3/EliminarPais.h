@@ -23,6 +23,17 @@ namespace avance1Proyecto3 {
 			//
 		}
 
+		Tienda* tienda;
+
+		EliminarPais(Tienda* tienda)
+		{
+			this->tienda = tienda;
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -67,6 +78,7 @@ namespace avance1Proyecto3 {
 			this->button1->TabIndex = 11;
 			this->button1->Text = L"Eliminar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &EliminarPais::button1_Click);
 			// 
 			// textBox1
 			// 
@@ -111,5 +123,24 @@ namespace avance1Proyecto3 {
 
 		}
 #pragma endregion
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ obtenerCodPais = this->textBox1->Text;
+		string ObtenerCodPais;
+		MarshalString(obtenerCodPais, ObtenerCodPais);
+
+		int cod = atoi(ObtenerCodPais.c_str());
+
+		NodoBB* nuevoNodo = new NodoBB(cod, msclr::interop::marshal_as<string>(this->textBox1->Text));
+		this->tienda->paises->eliminarPais(cod);
+
+		MessageBox::Show("Se a eliminado el País correctamente");
+	}
+		   void MarshalString(String^ s, string& os) {
+			   using namespace Runtime::InteropServices;
+			   const char* chars =
+				   (const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+			   os = chars;
+			   Marshal::FreeHGlobal(IntPtr((void*)chars));
+		   }
 	};
 }
