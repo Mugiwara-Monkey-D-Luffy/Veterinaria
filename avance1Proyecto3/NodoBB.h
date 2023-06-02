@@ -20,12 +20,15 @@ public:
     NodoBB* derecha;
 
     NodoBB() {
-
+        izquierda = NULL;
+        derecha = NULL;
     }
 
     NodoBB(int codPais, string nombre) {
         this->codPais = codPais;
         this->nombre = nombre;
+        izquierda = NULL;
+        derecha = NULL;
     }
 
     void MostrarNodoPais();

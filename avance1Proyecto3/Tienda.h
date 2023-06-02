@@ -32,19 +32,19 @@ public:
 		ciudades->cargarCuidad(paises);
 
 		clientes = new ArbolB();
-		clientes->cargarCliente(paises, ciudades);
+		//clientes->cargarCliente(paises, ciudades);
 
 		mascotas = new ArbolAVL();
-		mascotas->cargarMascota(clientes);
+		//mascotas->cargarMascota(clientes);
 
 		visitas = new ArbolBB();
-		visitas->cargarVisita(mascotas);
+		//visitas->cargarVisita(mascotas);
 
 		tratamientos = new ArbolRN();
-		tratamientos->cargarTratamiento();
+		//tratamientos->cargarTratamiento();
 
 		medicacion = new ArbolAA();
-		medicacion->cargarMascota(mascotas);
+		//medicacion->cargarMascota(mascotas);
 	}
 
 	//Gets y sets

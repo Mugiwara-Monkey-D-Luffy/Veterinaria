@@ -73,8 +73,12 @@ public:
 
     NodoBB* raiz;
 
+    NodoBB* raizCiudad;
+
+
     ArbolBB() {
         raiz = NULL;
+        raizCiudad = NULL;
     }
 
     void ReportePaises() {
@@ -126,4 +130,11 @@ public:
 
     void cargarPaises();
 
+    void ImprimirArbol(string& result, NodoBB* nodo);
+
+    NodoBB* BuscarPorIdPais(int id, NodoBB* nodo);
+
+    bool InsertaCiudad(int codCiudad, string nombre);
+
+    NodoBB* BuscarPorIdCiudad(int id, NodoBB* nodo);
 };

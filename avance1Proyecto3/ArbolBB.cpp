@@ -110,6 +110,51 @@ bool ArbolBB::InsertaPais(int codPais, string nombre) {
     }
 }
 
+bool ArbolBB::InsertaCiudad(int codCiudad, string nombre) {
+    if (this->raizCiudad == NULL) {
+        this->raizCiudad = new NodoBB(codCiudad, nombre);
+        return true;
+    }
+    else {
+        return this->InsertaNodo(codCiudad, nombre, this->raizCiudad);
+    }
+}
+
+NodoBB* ArbolBB::BuscarPorIdPais(int id, NodoBB* nodo) {
+    NodoBB* result = NULL;
+    if (nodo != NULL) {
+        if (id == nodo->codPais) {
+            result = nodo;
+        }
+        else {
+            if (id < nodo->codPais) {
+                result = BuscarPorIdPais(id, nodo->izquierda);
+            }
+            else if (id > nodo->codPais) {
+                result = BuscarPorIdPais(id, nodo->derecha);
+            }
+        }
+    }
+    return result;
+}
+
+NodoBB* ArbolBB::BuscarPorIdCiudad(int id, NodoBB* nodo) {
+    NodoBB* result = NULL;
+    if (nodo != NULL) {
+        if (id == nodo->codCuidad) {
+            result = nodo;
+        }
+        else {
+            if (id < nodo->codCuidad) {
+                result = BuscarPorIdCiudad(id, nodo->izquierda);
+            }
+            else if (id > nodo->codCuidad) {
+                result = BuscarPorIdCiudad(id, nodo->derecha);
+            }
+        }
+    }
+    return result;
+}
 
 NodoBB* ArbolBB::buscarNodoCuidad(NodoBB* nodo, int valorBuscado) {
     // Si el nodo actual es nulo o si el valor del nodo actual es igual al valor buscado, devuelve el nodo actual
@@ -138,6 +183,18 @@ NodoBB* ArbolBB::buscarNodoVisita(NodoBB* nodo, int valorBuscado) {
     // Si el valor buscado es mayor que el valor del nodo actual, busca en la rama derecha
     else {
         return buscarNodoVisita(nodo->derecha, valorBuscado);
+    }
+}
+
+void ArbolBB::ImprimirArbol(string& result, NodoBB* nodo) {
+    if (nodo == NULL)
+    {
+        return;
+    }
+    else {
+        ImprimirArbol(result,nodo->izquierda);
+        result.append(to_string(nodo->codPais) + " " + nodo->nombre + "\r\n");
+        ImprimirArbol(result,nodo->derecha);
     }
 }
 
@@ -180,7 +237,8 @@ void ArbolBB::insertarPais(NodoBB* nuevoNodo) {
 }
 
 void ArbolBB::insertarCuidad(NodoBB* nuevoNodo) {
-    raiz = insertarNodoCuidad(raiz, nuevoNodo);
+    //raiz = insertarNodoCuidad(raiz, nuevoNodo);
+
 }
 
 void ArbolBB::insertarVisita(NodoBB* nuevoNodo) {
@@ -226,15 +284,16 @@ void ArbolBB::cargarPais() {
         //NodoBB* aux = new NodoBB();
 
         // Separar la línea en tres partes: código del Pais y nombre
-        /*aux->codPais = stoi(linea.substr(0, pos));
-        aux->nombre = linea.substr(pos + 1);*/
+        int codPais = stoi(linea.substr(0, pos));
+        string nombre = linea.substr(pos + 1);
 
         // Insertar el nuevo Nodo en la lista doble
 
         //if (buscarPais(aux->codPais) == NULL) {
-            InsertaPais(stoi(linea.substr(0, pos)), linea.substr(pos + 1));
+            InsertaPais(codPais, nombre);
         //}
-
+        string result = "";
+        this->ImprimirArbol(result, this->raiz);
     }
     // Cerrar el archivo
     archivo.close();
@@ -275,12 +334,15 @@ void ArbolBB::cargarCuidad(ArbolBB* ArbolPaises) {
         aux->nombre = linea.substr(pos2 + 1);
 
         // Valida el codigo de pais exista
-        if (ArbolPaises->buscarPais(aux->codPais) == NULL) {
-            continue;
+        // Usar variables en lugar del aux
+
+        NodoBB* pais = ArbolPaises->BuscarPorIdPais(aux->codPais, ArbolPaises->raiz);
+        if (pais != NULL && aux->codPais == pais->codPais ) {
+            InsertaCiudad(aux->codCuidad, aux->nombre);
         }
-        if (buscarCiudad(aux->codCuidad) == NULL) {
-            insertarCuidad(aux);
-        }
+        string result = "";
+        this->ImprimirArbol(result, this->raizCiudad);
+
     }
 
     // Cerrar el archivo
